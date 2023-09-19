@@ -30,7 +30,7 @@ export async function GET(request: Request, {params}: {params: {img: string}}) {
 
     return new NextResponse(imgBuffer, {
         headers: {
-            'Content-Type': 'image/png',
+            'Content-Type': img.headers.get('content-type') || 'image/png',
             'Cache-Control': 'public, max-age=31536000, immutable'
         }
     });
